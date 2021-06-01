@@ -1,9 +1,6 @@
 <template>
     <div class="items-list">
-        <Item 
-            v-for="item in itemsList" :key="item.id"
-            :item="item"
-        />
+        <Item v-for="item in itemsList" :key="item.id" :item="item" />
     </div>
 </template>
 
@@ -14,12 +11,12 @@ import Item from './Item';
 export default {
     name: 'ItemsList',
     components: {
-        Item  
+        Item
     },
     data() {
         return {
             itemsList: []
-        }
+        };
     },
     created() {
         axios.get('http://localhost:3000/burguers').then((response) => {
@@ -29,9 +26,14 @@ export default {
 };
 </script>
 
-<style style="less" scoped>
-    .items-list {
-        margin: 50px;
-        display: flex;
+<style lang="less" scoped>
+.items-list {
+    margin: 50px;
+    display: flex;
+
+    @media @tablets {
+        flex-wrap: wrap;
+        margin: 20px;
     }
+}
 </style>
