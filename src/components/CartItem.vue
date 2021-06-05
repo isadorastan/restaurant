@@ -112,5 +112,31 @@ export default {
             line-height: 27px;
             color: @yellow;
         }
+
+        @media @tablets {
+            flex-wrap: wrap;
+
+            &--img-container {
+                order: 1;
+            }
+
+            .content {
+                order: 2;
+            }
+
+            &--quantity {
+                order: 3;
+                padding: 0;
+                width: 81px;
+                justify-content: center;
+            }
+
+            &--price {
+                order: 4;
+                padding: 0 20px;
+                margin: 5px 0;
+            }
+
+        }
     }
 </style>
