@@ -1,28 +1,28 @@
 {
     "burguers": [
         {
-            "id": 1,
+            "id": "0001",
             "name": "Triplo Burguer",
             "description": "Pão, maionese, 3 carnes de 180g, alface, tomate, bacon e cebola roxa",
             "price": 32.0,
             "offer": true
         },
         {
-            "id": 2,
+            "id": "0002",
             "name": "Chicken Burguer",
             "description": "Pão, maionese, carne de frango, alface, tomate e queijo",
             "price": 16.3,
             "offer": false
         },
         {
-            "id": 3,
+            "id": "0003",
             "name": "Duplo Burguer",
             "description": "Pão, maionese, 3 carnes de 180g, alface, tomate, bacon e cebola roxa",
             "price": 27.0,
             "offer": true
         },
         {
-            "id": 4,
+            "id": "0004",
             "name": "Picanha Burguer",
             "description": "Pão, maionese, 1 hamburguer de picanha, alface e tomate",
             "price": 40.3,
@@ -31,21 +31,21 @@
     ],
     "pizza": [
         {
-            "id": 1,
+            "id": "0005",
             "name": "Calabresa",
             "description": "Molho de tomate, calabresa e queijo",
             "price": 25.0,
             "offer": false
         },
         {
-            "id": 2,
+            "id": "0006",
             "name": "4 Queijos",
             "description": "Molho de tomate e 4 queijos",
             "price": 27.0,
             "offer": false
         },
         {
-            "id": 3,
+            "id": "0007",
             "name": "Strogonoff",
             "description": "Molho de tomate e strogonoff de carne",
             "price": 29.0,
@@ -54,21 +54,21 @@
     ],
     "deserts": [
         {
-            "id": 1,
+            "id": "0008",
             "name": "Casquinha mista",
             "description": "Casquinha mista de creme e chocolate",
             "price": 4.5,
             "offer": false
         },
         {
-            "id": 2,
+            "id": "0009",
             "name": "Sorvete de morango",
             "description": "Sorvete de morango na casquinha",
             "price": 6.0,
             "offer": false
         },
         {
-            "id": 3,
+            "id": "0010",
             "name": "Milshake",
             "description": "Milskahe de chocolate",
             "price": 10.0,
@@ -77,14 +77,14 @@
     ],
     "drinks": [
         {
-            "id": 1,
+            "id": "0011",
             "name": "Coca-cola lata",
             "description": "Lata 350ml",
             "price": 4.5,
             "offer": false
         },
         {
-            "id": 2,
+            "id": "0012",
             "name": "Guaraná Lata",
             "description": "Lata 350ml",
             "price": 4.5,
@@ -93,14 +93,14 @@
     ],
     "combo": [
         {
-            "id": 1,
+            "id": "0013",
             "name": "Combo 1",
             "description": "1 hamburguer duplo, 1 guaraná lata e 1 milkshake chocolate",
             "price": 50.0,
             "offer": false
         },
         {
-            "id": 2,
+            "id": "0014",
             "name": "Combo 2",
             "description": "2 pizzas",
             "price": 45.0,
