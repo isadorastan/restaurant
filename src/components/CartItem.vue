@@ -1,9 +1,9 @@
 <template>
   <div class="item">
       <div class="item--quantity">
-          <span class="buttons" @click="decreaseQuantity(item.id)">-</span>
+          <button class="buttons" @click="decreaseQuantity(item.id)" :disabled="item.quantity == 0">-</button>
           <span class="number">{{item.quantity}}</span>
-          <span class="buttons" @click="increaseQuantity(item.id)">+</span>
+          <button class="buttons" @click="increaseQuantity(item.id)">+</button>
       </div>
       <div class="item--img-container">
         <img class="item--img" :src="imagePath">
@@ -66,6 +66,10 @@ export default {
                 font-weight: 600;
                 font-size: 18px;
                 cursor: pointer;
+                background: none;
+                border: 0;
+
+                &:focus {outline:0;}
             }
         }
 
