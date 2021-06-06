@@ -11,7 +11,7 @@ import { mapActions } from 'vuex';
 
 export default {
     props: {
-        item: {}
+        item: {},
     },
     methods: {
         ...mapActions(['increaseQuantity', 'decreaseQuantity'])
