@@ -1,8 +1,8 @@
 <template>
     <div class="item--quantity">
-        <button class="buttons" @click="decreaseQuantity(item.id)" :disabled="item.quantity == 0">-</button>
+        <button class="buttons" @click="onDecreaseButtonClick" :disabled="item.quantity == 0">-</button>
         <span class="number">{{ item.quantity }}</span>
-        <button class="buttons" @click="increaseQuantity(item.id)">+</button>
+        <button class="buttons" @click="onIncreaseButtonClick">+</button>
     </div>
 </template>
 
@@ -12,9 +12,29 @@ import { mapActions } from 'vuex';
 export default {
     props: {
         item: {},
+        useStore: {
+            type: Boolean,
+            default: true
+        }
     },
     methods: {
-        ...mapActions(['increaseQuantity', 'decreaseQuantity'])
+        ...mapActions(['increaseQuantity', 'decreaseQuantity']),
+        onDecreaseButtonClick() {
+            if(this.useStore) {
+                this.decreaseQuantity(this.item.id);
+                return;
+            }
+
+            --this.item.quantity;
+        },
+        onIncreaseButtonClick() {
+            if(this.useStore) {
+                this.increaseQuantity(this.item.id);
+                return;
+            }
+
+            ++this.item.quantity;
+        }
     }
 };
 </script>

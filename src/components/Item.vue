@@ -35,9 +35,10 @@ export default {
     },
     methods: {
         addToCart() {
-            this.$store.dispatch('addToCart', this.item);
-            if (this.isDesktop()) return;
-            
+            if (this.isDesktop()) {
+                this.$store.dispatch('addToCart', this.item);
+                return;
+            }
 
             this.$router.push({ name: 'AddToCart', params: { id: this.item.id } });
         }
