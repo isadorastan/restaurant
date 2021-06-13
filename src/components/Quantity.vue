@@ -6,10 +6,8 @@
         <Modal :show="showModal">
             <div class="modal-content">
                 <h2>Deseja remover esse item do carrinho?</h2>
-                
-                <button class="secondary-button">Cancelar</button>
-                <button class="primary-button">Sim, remover</button>
-            
+                <button class="secondary-button" @click="onCancelButtonClick">Cancelar</button>
+                <button class="primary-button" @click="onRemoveButtonClick">Sim, remover</button>
             </div>
         </Modal>
     </div>
@@ -33,26 +31,36 @@ export default {
     data() {
         return {
             showModal: false
-        }
+        };
     },
     methods: {
         ...mapActions(['increaseQuantity', 'decreaseQuantity']),
         onDecreaseButtonClick() {
-            if(this.useStore) {
+            if (this.useStore) {
                 this.decreaseQuantity(this.item.id);
-                if(!this.item.quantity) this.showModal = true;
+                if (!this.item.quantity) this.showModal = true;
                 return;
             }
 
             --this.item.quantity;
         },
         onIncreaseButtonClick() {
-            if(this.useStore) {
+            if (this.useStore) {
                 this.increaseQuantity(this.item.id);
                 return;
             }
 
             ++this.item.quantity;
+        },
+        onCancelButtonClick() {
+            this.increaseQuantity(this.item.id);
+            this.showModal = false;
+        },
+        onRemoveButtonClick() {
+            this.showModal = false;
+            this.$nextTick(() => {
+                this.$store.dispatch('removeFromCart', this.item.id);
+            });
         }
     }
 };
@@ -86,7 +94,7 @@ export default {
 
     .modal-content {
         text-align: center;
-        
+
         button {
             margin-left: 10px;
             margin-top: 20px;
