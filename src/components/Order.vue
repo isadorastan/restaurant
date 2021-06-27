@@ -456,9 +456,10 @@ export default {
         }
     }
 
-    @media @tablets {
+    @media @small-desktops {
         width: 100%;
-        padding: 0;
+        max-width: 800px;
+        padding: 20px;
 
         .modal-content {
             button + button {
@@ -471,6 +472,10 @@ export default {
                 margin-left: 5px;
             }
         }
+    }
+
+    @media @smartphones {
+        padding: 0;
     }
 }
 </style>
