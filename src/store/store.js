@@ -26,6 +26,9 @@ export const store = new Vuex.Store({
         }, 
         removeFromCart(state, index) {
             state.cartList.splice(index, 1);
+        },
+        clearCart(state) {
+            state.cartList = [];
         }
     },
     actions: {
@@ -51,7 +54,9 @@ export const store = new Vuex.Store({
                     observations: el.observations
                 })
             }
-
+        },
+        clearCart({commit}) {
+            commit('clearCart');
         },
         removeFromCart({ state, commit }, id) {
             const index = state.cartList.findIndex((cartItem) => cartItem.id === id);
