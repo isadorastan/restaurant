@@ -59,6 +59,12 @@ export default {
     flex-wrap: wrap;
     align-content: flex-start;
 
+    @media @small-desktops {
+        width: 100%;
+        max-width: 800px;
+        margin: 50px auto;
+    }
+
     @media @tablets {
         flex-wrap: wrap;
         margin: 0px;

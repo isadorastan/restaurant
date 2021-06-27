@@ -105,7 +105,7 @@ export default {
         margin-top: 10px;
     }
 
-    @media @tablets {
+    @media @smartphones {
         width: 100%;
         height: fit-content;
         border: 1px solid @light-grey;
