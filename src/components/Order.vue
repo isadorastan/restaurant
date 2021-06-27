@@ -382,5 +382,22 @@ export default {
             }
         }
     }
+
+    @media @tablets {
+        width: 100%;
+        padding: 0;
+
+        .modal-content {
+            button + button {
+                margin-left: 5px;
+            }
+        }
+
+        .address-container {
+            .input-field + .input-field {
+                margin-left: 5px;
+            }
+        }
+    }
 }
 </style>
