@@ -136,11 +136,26 @@
                 <button class="primary-button" @click="validateAddressForm">Adicionar</button>
             </div>
         </Modal>
+
+        <Modal :show="showInvalidAddressModal" @on-modal-close="hideInvalidAddressModal">
+            <div class="invalid-address-modal">
+                <span v-html="warningIcon" class="icon"></span>
+                <span>Na modalidade delivery é necessário adicionar um endereço válido.</span>
+            </div>
+        </Modal>
+
+        <Modal :show="showSuccessModal" @on-modal-close="hideSuccessModal">
+            <div class="success-modal">
+                <span v-html="successIcon" class="icon"></span>
+                <span>Pedido realizado com sucesso!</span>
+            </div>
+        </Modal>
     </div>
 </template>
 
 <script>
 import Modal from '@/components/Modal';
+import feather from 'feather-icons';
 
 export default {
     components: {
@@ -211,18 +226,32 @@ export default {
                 }
             },
             showAddressModal: false,
+            showInvalidAddressModal: false,
+            showSuccessModal: false,
             deliveryType: 'store',
             paymentType: 'credit-card',
             savedAddress: false
         };
     },
     computed: {
+        warningIcon() {
+            return feather.icons['alert-triangle'].toSvg();
+        },
+        successIcon() {
+            return feather.icons['check-circle'].toSvg();
+        },
         isAddressFormValid() {
             let isValid = true;
             isValid &= this.formData.cep.valid;
             isValid &= this.formData.city.valid;
             isValid &= this.formData.street.valid;
             isValid &= this.formData.number.valid;
+            return isValid;
+        },
+        isUserFormDataValid() {
+            let isValid = true;
+            isValid &= this.formData.cellphone.valid;
+            isValid &= this.formData.name.valid;
             return isValid;
         },
         isDeliveryType() {
@@ -244,6 +273,10 @@ export default {
         triggerValidations() {
             this.formData.name.isValid();
             this.formData.cellphone.isValid();
+            if (this.isDeliveryType) {
+                this.triggerAddressFormValidations();
+                this.showInvalidAddressModal = !this.isAddressFormValid;
+            }
         },
         triggerAddressFormValidations() {
             this.formData.cep.isValid();
@@ -253,6 +286,8 @@ export default {
         },
         orderItens() {
             this.triggerValidations();
+            if(!this.isUserFormDataValid || !this.isAddressFormValid) return;
+            this.showSuccessModal = true;
         },
         onShowAddressModal() {
             this.showAddressModal = true;
@@ -260,11 +295,17 @@ export default {
         hideAddressModal() {
             this.showAddressModal = false;
         },
+        hideSuccessModal() {
+          this.$router.push({name: 'Home'});
+        },
         validateAddressForm() {
             this.triggerAddressFormValidations();
             if (!this.isAddressFormValid) return;
             this.savedAddress = true;
             this.showAddressModal = false;
+        },
+        hideInvalidAddressModal() {
+            this.showInvalidAddressModal = false;
         }
     }
 };
@@ -380,6 +421,18 @@ export default {
             & + button {
                 margin-left: 15px;
             }
+        }
+    }
+
+    .invalid-address-modal, .success-modal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 20px;
+
+        .icon {
+            margin-bottom: 15px;
         }
     }
 
