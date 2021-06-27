@@ -12,7 +12,7 @@
             <span>Total: </span>
             <span class="price">{{ getCartTotal | currency }}</span>
         </div>
-        <button class="primary-button payment-button" @click="goToPayment">Finalizar compra</button>
+        <button class="primary-button payment-button" v-if="!!cartList.length" @click="goToPayment">Finalizar compra</button>
     </div>
 </template>
 
