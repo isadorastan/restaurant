@@ -1,6 +1,6 @@
 <template>
     <div class="cart">
-        <router-link to="/" class="cart--go-back" v-if="isSmallScreens()">←️ Voltar</router-link>
+        <router-link to="/" class="cart--go-back">←️ Voltar</router-link>
         <h2 class="cart--title">Seu pedido</h2>
         <div class="cart--content">
             <p v-if="hasNoItem">Seu carrinho ainda está vazio</p>
@@ -12,7 +12,9 @@
             <span>Total: </span>
             <span class="price">{{ getCartTotal | currency }}</span>
         </div>
-        <button class="primary-button payment-button" v-if="!!cartList.length" @click="goToPayment">Finalizar compra</button>
+        <button class="primary-button payment-button" v-if="!!cartList.length" @click="goToPayment">
+            Finalizar compra
+        </button>
     </div>
 </template>
 
@@ -43,7 +45,7 @@ export default {
     },
     methods: {
         goToPayment() {
-            this.$router.push({name: 'Payment'});
+            this.$router.push({ name: 'Payment' });
         }
     }
 };
@@ -60,10 +62,7 @@ export default {
     flex-direction: column;
 
     &--go-back {
-        font-weight: 600;
-        font-size: 18px;
-        text-decoration: none;
-        color: black;
+        display: none;
     }
 
     &--title {
@@ -103,13 +102,23 @@ export default {
         transform: translateX(-30px);
     }
 
-    @media @tablets {
+    @media @small-desktops {
         width: 100%;
+        max-width: 800px;
+        margin: auto;
         min-width: unset;
         padding: 50px 20px 20px;
 
         .payment-button {
             width: 100%;
+        }
+
+        &--go-back {
+            display: block;
+            font-weight: 600;
+            font-size: 18px;
+            text-decoration: none;
+            color: black;
         }
     }
 }
