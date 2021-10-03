@@ -5,13 +5,18 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start:lambda": "netlify-lambda serve functions",
+    "build:lambda": "netlify-lambda build functions",
+    "prod": "npm run build; npm run build:lambda"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "es6-promise": "^4.2.8",
     "feather-icons": "^4.28.0",
+    "netlify-cli": "^6.9.28",
+    "netlify-lambda": "^2.0.14",
     "v-mask": "^2.2.4",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

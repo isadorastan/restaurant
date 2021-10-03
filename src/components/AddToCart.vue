@@ -39,7 +39,7 @@ export default {
         if(this.isDesktop()) {
           this.$router.push({name: 'Home'});
         }
-        axios.get(`http://localhost:3000/${this.selectedCategory}/${this.id}`).then((response) => {
+        axios.get(`/restaurant/${this.selectedCategory}/${this.id}`).then((response) => {
             this.item = { quantity: 1, observations: '', ...response.data};
         });
     },

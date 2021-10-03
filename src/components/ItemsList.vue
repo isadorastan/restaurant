@@ -36,7 +36,7 @@ export default {
             this.itemsList = [];
 
             setTimeout( () => {
-                axios.get(`http://localhost:3000/${this.selectedCategory}`).then((response) => {
+                axios.get(`/restaurant/${this.selectedCategory}`).then((response) => {
                     this.itemsList = response.data;
                     this.isLoading = false;
                 });
