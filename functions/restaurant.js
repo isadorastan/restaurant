@@ -10,7 +10,11 @@ exports.handler = function(event, context, callback) {
         id = path.split('/')[1];
         path = path.split('/')[0];
     }
-    
+
+    console.log('path--->', path)
+    console.log('id--->', id)
+    console.log('data--->', data)
+
     callback(null, {
         statusCode: 200,
         headers: {
@@ -19,6 +23,6 @@ exports.handler = function(event, context, callback) {
             /* Required for cookies, authorization headers with HTTPS */
             'Access-Control-Allow-Credentials': true
         },
-        body: id ?  JSON.stringify(data[path].find(item => item.id === id)) : JSON.stringify(data[path])
+        body: id ? JSON.stringify(data[path].find(item => item.id === id)) : JSON.stringify(data[path])
     })
 }
