@@ -1,7 +1,8 @@
 [build]
-    functions = "functions"
+    functions = "lambda"
     Command= "npm run prod"
 [[redirects]]
     from = "/restaurant/*"
     to = "/.netlify/functions/:splat"
     status = 200
+    force = true

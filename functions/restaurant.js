@@ -1,7 +1,7 @@
 const data = require('../db.json');
 
 exports.handler = function(event, context, callback) {
-    let path = event.path.replace('/.netlify/functions/restaurant', '');
+    let path = event.path.replace('/api', '');
     path = path.replace('/', '');
 
     let id = null;
@@ -11,6 +11,7 @@ exports.handler = function(event, context, callback) {
         path = path.split('/')[0];
     }
 
+    console.log('event-->', event)
     console.log('path--->', path)
     console.log('id--->', id)
 
